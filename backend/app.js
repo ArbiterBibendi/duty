@@ -1,8 +1,9 @@
 "use strict";
-const express = require('express');
-require('dotenv').config( {path: './config/.env'} );
+import 'dotenv/config.js';
 
-const tasks = require('./routes/tasks.js');
+import express from 'express';
+import tasks from './routes/tasks.js';
+
 
 const app = express();
 const PORT = 3000;
