@@ -3,14 +3,14 @@
 import express from "express";
 const router = express.Router();
 import db from "../config/db.js";
-router.get("/", (req, res) => {
-  db.query("SELECT * FROM tasks;")
-    .then((result) => {
-      res.json(result.rows);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+router.get("/", async (req, res) => {
+  try {
+    const result = await db.query("SELECT * FROM tasks;");
+    res.json(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
 });
 
 router.post("/", async (req, res) => {
