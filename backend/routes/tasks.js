@@ -33,8 +33,8 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.patch("/", async (req, res) => {
-  const { id } = req.body;
+router.patch("/:id", async (req, res) => {
+  const { id } = req.params;
   if (isNaN(id)) {
     res.status(400).json({ error: "id is NaN" });
     return;
@@ -68,8 +68,8 @@ router.patch("/", async (req, res) => {
   }
 });
 
-router.delete("/", async (req, res) => {
-  const { id } = req.body;
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
   if (isNaN(id)) {
     res.status(400).json({ error: "id is NaN" });
   }
