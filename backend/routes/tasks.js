@@ -68,4 +68,17 @@ router.patch("/", async (req, res) => {
   }
 });
 
+router.delete("/", async (req, res) => {
+  const { id } = req.body;
+  if (isNaN(id)) {
+    res.status(400).json({ error: "id is NaN" });
+  }
+  try {
+    await db.query("DELETE FROM tasks WHERE id = $1", [id]);
+    res.sendStatus(200);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
 export default router;
