@@ -1,6 +1,4 @@
 "use strict";
-import "dotenv/config.js";
-
 import express from "express";
 import tasks from "./routes/tasks.js";
 
