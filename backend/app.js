@@ -15,3 +15,5 @@ app.listen(PORT, (error) => {
   if (error) throw error;
   console.log("Express server running!");
 });
+
+export default app;
