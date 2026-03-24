@@ -38,4 +38,19 @@ describe("/tasks", () => {
       });
     });
   });
+
+  describe("POST", () => {
+    it("POST", async () => {
+      const res = await fetch(URL + endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: "Task 4",
+          description: "Test desc",
+          due: "2026-12-24",
+        }),
+      });
+      expect(res.status).to.equal(201);
+    });
+  });
 });
