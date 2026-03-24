@@ -26,7 +26,6 @@ router.post("/", async (req, res) => {
       [title, description, due],
     );
     res.sendStatus(201);
-    console.log("POST");
   } catch (error) {
     res.sendStatus(500);
     console.error(error);
