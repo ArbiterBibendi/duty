@@ -34,8 +34,28 @@ h2 {
 }
 .taskscontainer {
   width: 100%;
+  margin: auto;
 }
 .task {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  margin: 1em;
+  padding: 0.25em;
+  border: 1px solid grey;
+}
+.tasktitle {
+  display: inline;
+  font-size: 2em;
+}
+.taskcomplete {
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  margin: 0;
+}
+.taskdescription {
+  font-size: 1em;
+}
+.taskdue {
+  font-size: 1em;
 }

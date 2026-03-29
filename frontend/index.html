@@ -3,6 +3,7 @@
   <head>
     <title>Duty</title>
     <link href="style.css" rel="stylesheet" />
+    <script defer src="script.js"></script>
   </head>
   <body>
     <header>
@@ -15,10 +16,14 @@
     <div class="tasks">
       <h2>Tasks</h2>
       <div class="taskscontainer">
-        <div class="task">Monday</div>
-        <div class="task">Tuesday</div>
-        <div class="task">Wednesday</div>
-      </div>
+			<div id="testtask" class="task">
+				<div class="tasktitle">TestTitle</div>
+				<div class=taskcomplete>
+					<input type="checkbox"/>
+				</div>
+				<footer class="taskdescription">Test Description</footer>
+				<div class="taskdue">December 15, 2027</div>
+			</div>
     </div>
   </body>
 </html>
