@@ -1,4 +1,15 @@
 const URL = "http://localhost:3000/tasks";
+const toggleTask = (id, value) => {
+  fetch(URL + `/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      complete: value,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
 const taskscontainer = document.getElementsByClassName("taskscontainer")[0];
 // {title, description, due, complete, created, id}
 const addTask = (task) => {
@@ -8,6 +19,7 @@ const addTask = (task) => {
   const taskDiv = document.createElement("div");
   taskDiv.className = "task";
   const { title, description, due, complete, created, id } = task;
+  taskDiv.setAttribute("id", id);
 
   const titleDiv = document.createElement("div");
   titleDiv.className = "tasktitle";
@@ -19,6 +31,9 @@ const addTask = (task) => {
   completeInput.type = "checkbox";
   completeInput.checked = complete;
   completeInput.innerText = "Complete";
+  completeInput.onclick = (event) => {
+    toggleTask(event.target.parentNode.parentNode.id, completeInput.checked);
+  };
 
   const descriptionFooter = document.createElement("footer");
   descriptionFooter.className = "taskdescription";
