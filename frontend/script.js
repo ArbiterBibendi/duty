@@ -23,6 +23,8 @@ const displayDate = (dateString) => {
     0,
     0,
   );
+  // If date is null then it is due at epoch
+  // if date is passed due, then it just shows as due today
   const daysUntilDue = (date.getTime() - today.getTime()) / 1000 / 60 / 60 / 24;
   if (daysUntilDue < 1) {
     return "Today";
