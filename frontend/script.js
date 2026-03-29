@@ -10,6 +10,31 @@ const toggleTask = (id, value) => {
     },
   });
 };
+
+const displayDate = (dateString) => {
+  const cutoff = 5; // 5 days
+  const date = new Date(dateString);
+  const now = new Date();
+  const today = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    0,
+    0,
+    0,
+  );
+  const daysUntilDue = (date.getTime() - today.getTime()) / 1000 / 60 / 60 / 24;
+  if (daysUntilDue < 1) {
+    return "Today";
+  }
+  if (daysUntilDue < 2 && daysUntilDue >= 1) {
+    return "Tomorrow";
+  }
+  if (daysUntilDue <= cutoff) {
+    return `${daysUntilDue} days`;
+  }
+  return date.toLocaleDateString();
+};
 const taskscontainer = document.getElementsByClassName("taskscontainer")[0];
 // {title, description, due, complete, created, id}
 const addTask = (task) => {
@@ -41,7 +66,7 @@ const addTask = (task) => {
 
   const dueDiv = document.createElement("div");
   dueDiv.className = "taskdue";
-  dueDiv.innerText = due;
+  dueDiv.innerText = displayDate(due);
 
   const dueTextDiv = document.createElement("div");
   dueTextDiv.innerText = "Due:";
@@ -61,7 +86,18 @@ taskscontainer.removeChild(document.getElementById("testtask"));
 const tasks = fetch(URL)
   .then((res) => res.json())
   .then((body) => {
-    body.forEach((task) => {
+    const sortedTasks = body.toSorted((first, second) => {
+      let firstDate, secondDate;
+      if (first.due != second.due) {
+        firstDate = new Date(first.due);
+        secondDate = new Date(second.due);
+      } else {
+        firstDate = new Date(first.created);
+        secondDate = new Date(second.created);
+      }
+      return firstDate.getTime() - secondDate.getTime();
+    });
+    sortedTasks.forEach((task) => {
       addTask(task);
     });
   });
