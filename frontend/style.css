@@ -1,0 +1,41 @@
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 100px 1fr;
+}
+header {
+  border: 1px solid black;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  display: flex;
+  justify-content: center;
+}
+
+nav {
+  border: 1px solid black;
+}
+h2 {
+  border-bottom: 1px solid black;
+}
+.main-container {
+  grid-column: 1 / 3;
+}
+.tasks {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.taskscontainer {
+  width: 100%;
+}
+.task {
+  display: flex;
+  justify-content: center;
+}
