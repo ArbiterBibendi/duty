@@ -43,11 +43,17 @@ const addTask = (task) => {
   dueDiv.className = "taskdue";
   dueDiv.innerText = due;
 
+  const dueTextDiv = document.createElement("div");
+  dueTextDiv.innerText = "Due:";
+  dueTextDiv.className = "duetext";
   taskDiv.appendChild(titleDiv);
-  completeDiv.appendChild(completeInput);
-  taskDiv.appendChild(completeDiv);
+  taskDiv.appendChild(dueTextDiv);
   taskDiv.appendChild(descriptionFooter);
   taskDiv.appendChild(dueDiv);
+
+  completeDiv.appendChild(completeInput);
+  taskDiv.appendChild(completeDiv);
+
   taskscontainer.appendChild(taskDiv);
 };
 
